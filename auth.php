@@ -1,7 +1,7 @@
 <?php
 			$servername = "localhost";
-			$username = "root";
-                        $password = "Double64";
+			$username = "admin";
+            $password = "D1T7PIevwX1s";
 			$dbname = "litsyl";
 			$login = ($_POST['login']); //trim удаляет пробелы
 			$Pass = ($_POST['pass']);
@@ -10,7 +10,41 @@
 				header("Location: index.html"); exit();
 			}
 			else {
+				$conn = mysqli_connect($servername, $username, $password, $dbname);
+				mysqli_set_charset($conn, utf-8);
+				
+				/* check connection */ 
+				if (!$conn) {
+					printf("Connect failed: %s: %s\n", mysqli_connect_errno(), mysqli_connect_error());
+					exit();
+				}
+				if (!$conn->set_charset("utf8")) {
+					printf("Ошибка при загрузке набора символов utf-8 %s\n", $conn->error);
+					exit();
+				}else {
+					printf ("Текущий набор символов: %s\n", mysqli_get_charset($conn));
+				}
+
+				printf("Host information: %s\n", mysqli_get_host_info($conn));
+				
+				$sql_query = "SELECT Login, Password FROM loginpass WHERE Login='$login'";
+				$result = mysqli_query($conn, $sql_query);
+				$row = $result->fetch_assoc();
+					
+					
+				if($row['Password'] == $Pass) {
+					header("Location: adding.html"); exit();
+				}
+				else {
+					header("Location: index.html"); exit();
+				}
+
+				/* close connection */
+				mysqli_close($conn);
 			
+			
+			
+			/*
 			$conn = new mysqli($servername, $username, $password, $dbname);
 			
 			mysqli_set_charset ( $conn , utf-8 );
@@ -40,6 +74,7 @@
 				}
 				
 				$conn->close();
+				*/
 			}
 		?>
 <!DOCTYPE html>

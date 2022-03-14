@@ -62,49 +62,85 @@
 			<?php
 			
 				$servername = "localhost";
-				$username = "root";
-				$password = "Double64";
+				$username = "admin";
+				$password = "D1T7PIevwX1s";
 				$dbname = "litsyl";
 				$request =($_POST['request']);//trim удаляет пробелы
 				#$conn = new mysqli($servername, $username, $password, $dbname);
-				$conn = mysql_connect($servername, $username, $password);
-				mysql_select_db($dbname,$conn);
+				
 				if (empty($request)) {
 					echo"<font color='red'>Вы ничего не написали.</font>";
-				}else{
-					
-				if (!$conn) {
-						echo 'Не могу соединиться с БД. Код ошибки: ' . mysql_connect_errno() . ', ошибка: ' . mysql_connect_error();
-						exit;
-				}
-				
-				if (!mysql_set_charset("utf8",$conn)) {
-					printf("Ошибка при загрузке набора символов utf8: %s\n", mysql_error($conn));
-					exit();
 				}
 				else {
-					//printf ("Текущий набор символов: %s\n", $conn->character_set_name());
-				}
+					$conn = mysqli_connect($servername, $username, $password, $dbname);
+					mysqli_set_charset($conn, utf-8);
+					/* check connection */ 
+					if (!$conn) {
+						printf("Connect failed: %s: %s\n", mysqli_connect_errno(), mysqli_connect_error());
+						exit();
+					}
+					if (!$conn->set_charset("utf8")) {
+						printf("Ошибка при загрузке набора символов utf-8 %s\n", $conn->error);
+						exit();
+					}else {
+						printf ("Текущий набор символов: %s\n", mysqli_get_charset($conn));
+					}
+
+					printf("Host information: %s\n", mysqli_get_host_info($conn));
+					$sql_query = "SELECT id, Key_words, Link FROM Links WHERE Key_words LIKE '%".$request."%'";
+					$result = mysqli_query($conn, $sql_query);
+					//$row = $result->fetch_assoc();
+					$row_cnt = mysqli_num_rows($result);
+					#if ($result->num_rows > 0) {
+					if ($row_cnt > 0) {
+						echo "<ol>";
+						while ($row = mysqli_fetch_assoc($result)) {
+							echo "<li>" .$row["Link"]. "</li>";
+						}
+						echo "</ol>";
+					} else {
+						echo "Ничего не найдено.";
+					}
+					/* close connection */
+					mysqli_close($conn);
+				//$conn = mysql_connect($servername, $username, $password);
+				//mysql_select_db($dbname,$conn);
+				//if (empty($request)) {
+				//	echo"<font color='red'>Вы ничего не написали.</font>";
+				//}else{
+					
+				//	if (!$conn) {
+				//		echo 'Не могу соединиться с БД. Код ошибки: ' . mysql_connect_errno() . ', ошибка: ' . mysql_connect_error();
+				//		exit;
+				//	}
+				
+				//if (!mysql_set_charset("utf8",$conn)) {
+				//	printf("Ошибка при загрузке набора символов utf8: %s\n", mysql_error($conn));
+				//	exit();
+				//}
+				//else {
+				//	printf ("Текущий набор символов: %s\n", $conn->character_set_name());
+				//}
 				
 				#$sql = "SELECT id, Key_words, Link FROM test WHERE Key_words LIKE '%".$request."%'";
 				
 				#$result = $conn->query($sql);
-				$result = mysql_query("SELECT id, Key_words, Link FROM Links WHERE Key_words LIKE '%".$request."%'",$conn);
+				//$result = mysql_query("SELECT id, Key_words, Link FROM Links WHERE Key_words LIKE '%".$request."%'",$conn);
 				#$row_cnt = $result->num_rows;
-				$row_cnt = mysql_num_rows($result);
+				//$row_cnt = mysql_num_rows($result);
 				#if ($result->num_rows > 0) {
-				if ($row_cnt > 0) {
-					echo "<ol>";
-					while ($row = mysql_fetch_assoc($result)) {
-						echo "<li>" .$row["Link"]. "</li>";
-					}
-					echo "</ol>";
-				} else {
-					echo "Ничего не найдено.";
-				}
+				//if ($row_cnt > 0) {
+				//	echo "<ol>";
+				//	while ($row = mysql_fetch_assoc($result)) {
+				//		echo "<li>" .$row["Link"]. "</li>";
+				//	}
+				//	echo "</ol>";
+				//} else {
+				//	echo "Ничего не найдено.";
+				//}
 				
-				mysql_close($conn);
-			}
+				//mysql_close($conn);
+				}
 			?>
 			
 			
