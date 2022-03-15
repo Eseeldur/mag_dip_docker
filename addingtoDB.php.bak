@@ -78,7 +78,7 @@
 								exit();
 							}else {
 								//printf ("Текущий набор символов: %s\n", mysqli_get_charset($conn));
-								echo "Текущий набор символов: " . mysqli_get_charset($conn) . "\n";
+								echo "Текущий набор символов: " . mysqli_character_set_name($conn);
 							}
 
 							//printf("Host information: %s\n", mysqli_get_host_info($conn));

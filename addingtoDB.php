@@ -100,10 +100,11 @@
 							}
 							*/
 							//проверка на существование работы в БД
-							$sql_query_exist = "SELECT id FROM Links WHERE Link LIKE '%$name%'"
-							$result = mysqli_query($conn, $sql_query_exist);
+							//$sql_query_exist = "SELECT id FROM Links WHERE Link LIKE '%$name%'"
+							//$result = mysqli_query($conn, $sql_query_exist);
 							//$result = mysqli_query("SELECT id FROM Links WHERE Link LIKE '%$name%'",$dbcon);	 
-							$row = mysqli_fetch_array($result);
+							//$row = mysqli_fetch_array($result);
+							$row = mysqli_fetch_array(mysqli_query($conn, "SELECT id FROM Links WHERE Link LIKE '%$name%'"));
 							
 							if(!empty($row["id"])) {
 								exit("Работа уже существует в базе данных. <form class='form' method='get' action='adding.html'><button class='form_button'>Измените ссылку?</button></form>.");
