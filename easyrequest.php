@@ -3,7 +3,7 @@
     <head>
         <title>Поиск ссылок на научные работы</title>
         <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
-		<link href="Css.css" rel="stylesheet" type="text/css">
+		<link href="css/Css.css" rel="stylesheet" type="text/css">
     </head>
     <body>
 			<div id='K'>
@@ -85,11 +85,11 @@
 						echo "Ошибка при загрузке набора символов utf-8" . $conn->error;
 						exit();
 					}else {
-						echo "Текущий набор символов: " . mysqli_character_set_name($conn);
+						//echo "Текущий набор символов: " . mysqli_character_set_name($conn);
 					}
 
 					//printf("Host information: %s\n", mysqli_get_host_info($conn));
-					echo "Host information: " . mysqli_get_host_info($conn) ."\n";
+					//echo "Host information: " . mysqli_get_host_info($conn) ."\n";
 					$sql_query = "SELECT id, Key_words, Link FROM Links WHERE Key_words LIKE '%".$request."%'";
 					$result = mysqli_query($conn, $sql_query);
 					//$row = $result->fetch_assoc();

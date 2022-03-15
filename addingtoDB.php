@@ -3,7 +3,7 @@
     <head>
         <title>Поиск ссылок на научные работы</title>
         <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
-		<link href="Css.css" rel="stylesheet" type="text/css">
+		<link href="css/Css.css" rel="stylesheet" type="text/css">
     </head>
     <body>
 			<div id='K'>
@@ -78,11 +78,11 @@
 								exit();
 							}else {
 								//printf ("Текущий набор символов: %s\n", mysqli_get_charset($conn));
-								echo "Текущий набор символов: " . mysqli_character_set_name($conn);
+								//echo "Текущий набор символов: " . mysqli_character_set_name($conn);
 							}
 
 							//printf("Host information: %s\n", mysqli_get_host_info($conn));
-							echo "Host information: " . mysqli_get_host_info($conn) ."\n";
+							//echo "Host information: " . mysqli_get_host_info($conn) ."\n";
 							
 							/*
 							$dbcon = mysql_connect("localhost","root","Double64");
@@ -115,7 +115,13 @@
 								
 								if (!$sql_query_add) {echo "Запрос не прошел.Попробуйте еще раз.";}
 								else{
-									echo "<h3 text-align='center'>Вы успешно добавили работу!</h3>";
+									//echo "<h3 text-align='center'>Вы успешно добавили работу!</h3>";
+									echo "<div class='btn-contain'>";
+										echo "<button class='btn'>Вы успешно добавили работу!</button>";
+										echo "<script src='js/script.js'></script>";
+										echo "<div class='btn-particles'>";
+										echo "</div>";
+									echo "</div>";
 								}
 							}
 							/* close connection */

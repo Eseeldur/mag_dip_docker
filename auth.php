@@ -25,11 +25,11 @@
 					exit();
 				}else {
 					//printf ("Текущий набор символов: %s\n", mysqli_get_charset($conn));
-					echo "Текущий набор символов: " . mysqli_character_set_name($conn);
+					//echo "Текущий набор символов: " . mysqli_character_set_name($conn);
 				}
 
 				//printf("Host information: %s\n", mysqli_get_host_info($conn));
-				echo "Host information: " . mysqli_get_host_info($conn) ."\n";
+				//echo "Host information: " . mysqli_get_host_info($conn) ."\n";
 				
 				$sql_query = "SELECT Login, Password FROM loginpass WHERE Login='$login'";
 				$result = mysqli_query($conn, $sql_query);
@@ -87,7 +87,7 @@
     <head>
         <title>Поиск ссылок на научные работы</title>
         <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
-		<link href="Css.css" rel="stylesheet" type="text/css">
+		<link href="css/Css.css" rel="stylesheet" type="text/css">
     </head>
 	<body>
 	

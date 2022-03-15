@@ -1,0 +1,37 @@
+<html>
+	<head>
+	<link rel="stylesheet" href="ForAdding.css" type="text/css">
+		<meta charset="UTF-8">
+	</head>
+	
+	<body>
+		<form class="form" method="post" action="addingtoDB.php">
+
+			<h1 class="form_title">Добавление новой работы</h1>
+				
+			<div class="form_grup">
+				
+				<label class="form_label"></label>
+				<input class="form_input" name="Name" placeholder="Название работы:">
+			  
+			</div>
+				
+			<div class="form_grup">
+				
+				<label class="form_label"></label>
+				<input class="form_input" name="User_Link" placeholder="Полная ссылка по ГОСТ:">
+			  
+			</div>
+			  
+			<div class="form_grup">
+				
+				<label class="form_label"></label>
+				<input class="form_input" name="Key_words" placeholder="Ключевые слова через пробел:">
+			  
+			</div>
+
+			  <button class="form_button">Добавить</button>
+
+		</form>
+	</body>
+</html>
