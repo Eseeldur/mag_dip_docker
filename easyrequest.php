@@ -63,7 +63,7 @@
 			
 				$servername = "localhost";
 				$username = "admin";
-				$password = "D1T7PIevwX1s";
+				$password = "NTLTB25qj7un";
 				$dbname = "litsyl";
 				$request =($_POST['request']);//trim удаляет пробелы
 				#$conn = new mysqli($servername, $username, $password, $dbname);
@@ -73,7 +73,7 @@
 				}
 				else {
 					$conn = mysqli_connect($servername, $username, $password, $dbname);
-					mysqli_set_charset($conn, utf-8);
+					mysqli_set_charset($conn, "utf-8");
 					/* check connection */ 
 					if (!$conn) {
 						printf("Connect failed: %s: %s\n", mysqli_connect_errno(), mysqli_connect_error());
@@ -83,7 +83,7 @@
 						printf("Ошибка при загрузке набора символов utf-8 %s\n", $conn->error);
 						exit();
 					}else {
-						printf ("Текущий набор символов: %s\n", mysqli_get_charset($conn));
+						echo "Текущий набор символов: " . mysqli_get_charset($conn) . "\n";
 					}
 
 					printf("Host information: %s\n", mysqli_get_host_info($conn));

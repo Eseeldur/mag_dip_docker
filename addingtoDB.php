@@ -38,7 +38,7 @@
 					if ($_POST) {
 						$servername = "localhost";
 						$username = "admin";
-						$password = "D1T7PIevwX1s";
+						$password = "NTLTB25qj7un";
 						$dbname = "litsyl";
 						$user_link = trim($_POST['User_Link']);
 						$key_words = trim($_POST['Key_words']);
@@ -64,7 +64,7 @@
 						} else {
 							//подключение к базе данных
 							$conn = mysqli_connect($servername, $username, $password, $dbname);
-							mysqli_set_charset($conn, utf-8);
+							mysqli_set_charset($conn, "utf-8");
 							
 							/* check connection */ 
 							if (!$conn) {

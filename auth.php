@@ -1,7 +1,7 @@
 <?php
 			$servername = "localhost";
 			$username = "admin";
-            $password = "D1T7PIevwX1s";
+			$password = "NTLTB25qj7un";
 			$dbname = "litsyl";
 			$login = ($_POST['login']); //trim удаляет пробелы
 			$Pass = ($_POST['pass']);
@@ -11,7 +11,7 @@
 			}
 			else {
 				$conn = mysqli_connect($servername, $username, $password, $dbname);
-				mysqli_set_charset($conn, utf-8);
+				mysqli_set_charset($conn, "utf-8");
 				
 				/* check connection */ 
 				if (!$conn) {
