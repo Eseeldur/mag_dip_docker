@@ -15,17 +15,21 @@
 				
 				/* check connection */ 
 				if (!$conn) {
-					printf("Connect failed: %s: %s\n", mysqli_connect_errno(), mysqli_connect_error());
+					//printf("Connect failed: %s: %s\n", mysqli_connect_errno(), mysqli_connect_error());
+					echo "Connect failed: " . mysqli_connect_errno() . ": " . mysqli_connect_error() ."\n";
 					exit();
 				}
 				if (!$conn->set_charset("utf8")) {
-					printf("Ошибка при загрузке набора символов utf-8 %s\n", $conn->error);
+					//printf("Ошибка при загрузке набора символов utf-8 %s\n", $conn->error);
+					echo "Ошибка при загрузке набора символов utf-8" . $conn->error . "\n";
 					exit();
 				}else {
-					printf ("Текущий набор символов: %s\n", mysqli_get_charset($conn));
+					//printf ("Текущий набор символов: %s\n", mysqli_get_charset($conn));
+					echo "Текущий набор символов: " . mysqli_get_charset($conn) . "\n";
 				}
 
-				printf("Host information: %s\n", mysqli_get_host_info($conn));
+				//printf("Host information: %s\n", mysqli_get_host_info($conn));
+				echo "Host information: " . mysqli_get_host_info($conn) ."\n";
 				
 				$sql_query = "SELECT Login, Password FROM loginpass WHERE Login='$login'";
 				$result = mysqli_query($conn, $sql_query);

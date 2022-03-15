@@ -82,10 +82,10 @@
 					}
 					if (!$conn->set_charset("utf8")) {
 						//printf("Ошибка при загрузке набора символов utf-8 %s\n", $conn->error);
-						echo "Ошибка при загрузке набора символов utf-8" . $conn->error . "\n";
+						echo "Ошибка при загрузке набора символов utf-8" . $conn->error;
 						exit();
 					}else {
-						echo "Текущий набор символов: " . mysqli_get_charset($conn) . "\n";
+						echo "Текущий набор символов: " . mysqli_character_set_name($conn);
 					}
 
 					//printf("Host information: %s\n", mysqli_get_host_info($conn));

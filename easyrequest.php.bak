@@ -76,17 +76,20 @@
 					mysqli_set_charset($conn, "utf-8");
 					/* check connection */ 
 					if (!$conn) {
-						printf("Connect failed: %s: %s\n", mysqli_connect_errno(), mysqli_connect_error());
+						//printf("Connect failed: %s: %s\n", mysqli_connect_errno(), mysqli_connect_error());
+						echo "Connect failed: " . mysqli_connect_errno() . ": " . mysqli_connect_error() ."\n";
 						exit();
 					}
 					if (!$conn->set_charset("utf8")) {
-						printf("Ошибка при загрузке набора символов utf-8 %s\n", $conn->error);
+						//printf("Ошибка при загрузке набора символов utf-8 %s\n", $conn->error);
+						echo "Ошибка при загрузке набора символов utf-8" . $conn->error . "\n";
 						exit();
 					}else {
 						echo "Текущий набор символов: " . mysqli_get_charset($conn) . "\n";
 					}
 
-					printf("Host information: %s\n", mysqli_get_host_info($conn));
+					//printf("Host information: %s\n", mysqli_get_host_info($conn));
+					echo "Host information: " . mysqli_get_host_info($conn) ."\n";
 					$sql_query = "SELECT id, Key_words, Link FROM Links WHERE Key_words LIKE '%".$request."%'";
 					$result = mysqli_query($conn, $sql_query);
 					//$row = $result->fetch_assoc();
