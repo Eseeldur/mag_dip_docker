@@ -116,7 +116,7 @@
 								if (!$sql_query_add) {echo "Запрос не прошел.Попробуйте еще раз.";}
 								else{
 									//echo "<h3 text-align='center'>Вы успешно добавили работу!</h3>";
-									echo "<h3 margin-left: auto;margin-right: auto;>Вы успешно добавили работу!</h3>";
+									echo "<h3 class='form'>Вы успешно добавили работу!</h3>";
 								}
 							}
 							/* close connection */
